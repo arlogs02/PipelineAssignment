@@ -1,0 +1,4 @@
+https://air-quality-api.open-meteo.com/v1/air-quality?latitude=38.2542,35.3733,25.9017,44.0521&longitude=-85.7594,-119.0187,-97.4975,-123.0867&hourly=pm10,pm2_5,carbon_monoxide,carbon_dioxide,nitrogen_dioxide,sulphur_dioxide,ozone,methane,uv_index_clear_sky,uv_index,dust,aerosol_optical_depth,us_aqi,us_aqi_pm2_5,us_aqi_pm10,us_aqi_nitrogen_dioxide,us_aqi_carbon_monoxide,us_aqi_ozone,us_aqi_sulphur_dioxide&timezone=America%2FNew_York&forecast_days=7
+
+Note: This API call is equivalent to 7.6 calls because of factors like long time intervals,
+the number of locations, variables, or models involved.
