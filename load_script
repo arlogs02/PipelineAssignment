@@ -13,15 +13,15 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 # The order of variables in hourly or daily is important to assign them correctly below
 url = "https://air-quality-api.open-meteo.com/v1/air-quality"
 params = {
-	"latitude": [38.2542, 35.3733, 25.9017, 44.0521],
-	"longitude": [-85.7594, -119.0187, -97.4975, -123.0867],
+	"latitude": [38.2542, 35.3733, 25.9017, 44.0521, 45.6797, 42.8666, 20.8893],
+	"longitude": [-85.7594, -119.0187, -97.4975, -123.0867, -111.0386, -106.3131, -156.4729],
 	"hourly": ["pm10", "pm2_5", "carbon_monoxide", "carbon_dioxide", "nitrogen_dioxide", "sulphur_dioxide", "ozone", "methane", "uv_index_clear_sky", "uv_index", "dust", "aerosol_optical_depth", "us_aqi", "us_aqi_pm2_5", "us_aqi_pm10", "us_aqi_nitrogen_dioxide", "us_aqi_carbon_monoxide", "us_aqi_ozone", "us_aqi_sulphur_dioxide"],
 	"timezone": "America/New_York",
 	"forecast_days": 7,
 }
 responses = openmeteo.weather_api(url, params = params)
 
-# Process 4 locations
+# Process 7 locations
 for response in responses:
 	print(f"\nCoordinates: {response.Latitude()}°N {response.Longitude()}°E")
 	print(f"Elevation: {response.Elevation()} m asl")
