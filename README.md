@@ -35,8 +35,8 @@ Variables are grouped into four analytical categories matching the dashboard lay
 
 ```
 air_quality_project/
-├── air_quality_pipeline.py   # Main ETL pipeline (extract → clean → transform → validate → load)
-├── supabase_views.sql        # SQL views for Power BI analytics layer
+├── data                      # CSV files
+├── notebooks                 # loadscript, python script, SQL for Power BI analytics layer 
 ├── requirements.txt          # Python dependencies
 ├── README.md                 
 ├── .env                      # Database credentials (hidden)
