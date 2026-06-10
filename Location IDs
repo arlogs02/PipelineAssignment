@@ -1,8 +1,0 @@
-﻿location_id,latitude,longitude,elevation,utc_offset_seconds,timezone,timezone_abbreviation
-0,38.300003,-85.799995,144,-14400,America/New_York,GMT-4
-1,35.4,-119,124,-14400,America/New_York,GMT-4
-2,25.900002,-97.5,15,-14400,America/New_York,GMT-4
-3,44.100006,-123.1,130,-14400,America/New_York,GMT-4
-4,45.699997,-111,1466,-14400,America/New_York,GMT-4
-5,42.90001,-106.299995,1558,-14400,America/New_York,GMT-4
-6,20.900002,-156.5,5,-14400,America/New_York,GMT-4
