@@ -283,10 +283,10 @@ The report is structured across four pages:
 
 | Page | Views used | Key visuals |
 |---|---|---|
-| 1 — Overview | `daily_summary` | KPI cards, Azure Maps bubble map, AQI bar chart, summary table |
-| 2 — Air quality & AQI | `particulates`, `daily_summary` | AQI trend, PM2.5 vs PM10 bar, AQI category hours stacked bar |
-| 3 — Pollutants | `gaseous_pollutants`, `greenhouse_gases` | % of WHO guideline bar, ozone trend, NO₂ trend, CO₂ vs methane dual-axis |
-| 4 — Atmospheric | `atmospheric` | Peak UV by city, hourly UV profile, aerosol vs dust scatter, UV vs clear-sky |
+| 1 — Overview | `vw_daily_summary` | KPI cards, Azure Maps bubble map, AQI bar chart, summary table |
+| 2 — Air quality & AQI | `vw_particulates`, `vw_daily_summary` | AQI trend, PM2.5 vs PM10 bar, AQI category hours stacked bar |
+| 3 — Pollutants | `vw_gaseous_pollutants`, `vw_greenhouse_gases` | % of WHO guideline bar, ozone trend, NO₂ trend, CO₂ vs methane dual-axis |
+| 4 — Atmospheric | `vw_atmospheric` | Peak UV by city, hourly UV profile, aerosol vs dust scatter, UV vs clear-sky |
 
 A city slicer on each page filters all visuals simultaneously. An
 `Is Daytime` calculated column filters UV visuals to hours 6am–8pm,
