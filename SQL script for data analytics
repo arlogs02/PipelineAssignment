@@ -1,0 +1,78 @@
+-- =============================================================
+-- Air Quality — Was written to be ran in Supabase SQL Editor 
+-- =============================================================
+
+CREATE OR REPLACE VIEW vw_particulates AS
+SELECT
+    l.name            AS city,
+    l.state,
+    r.time,
+    p.pm2_5,
+    p.pm10,
+    p.us_aqi,
+    p.aqi_category
+FROM particulates p
+JOIN readings     r ON r.reading_id = p.reading_id
+JOIN locations    l ON l.location_id = r.location_id;
+
+CREATE OR REPLACE VIEW vw_gaseous_pollutants AS
+SELECT
+    l.name            AS city,
+    l.state,
+    r.time,
+    g.carbon_monoxide,
+    g.nitrogen_dioxide,
+    g.sulphur_dioxide,
+    g.ozone
+FROM gaseous_pollutants g
+JOIN readings            r ON r.reading_id = g.reading_id
+JOIN locations           l ON l.location_id = r.location_id;
+
+CREATE OR REPLACE VIEW vw_greenhouse_gases AS
+SELECT
+    l.name            AS city,
+    l.state,
+    r.time,
+    g.carbon_dioxide,
+    g.methane
+FROM greenhouse_gases g
+JOIN readings          r ON r.reading_id = g.reading_id
+JOIN locations         l ON l.location_id = r.location_id;
+
+CREATE OR REPLACE VIEW vw_atmospheric AS
+SELECT
+    l.name            AS city,
+    l.state,
+    r.time,
+    a.uv_index,
+    a.uv_index_clear_sky,
+    a.aerosol_optical_depth,
+    a.dust
+FROM atmospheric a
+JOIN readings     r ON r.reading_id = a.reading_id
+JOIN locations    l ON l.location_id = r.location_id;
+
+CREATE OR REPLACE VIEW vw_daily_summary AS
+SELECT
+    l.name                                     AS city,
+    l.state,
+    DATE(r.time)                               AS date,
+    ROUND(AVG(p.us_aqi)::numeric, 1)           AS aqi_avg,
+    MAX(p.us_aqi)                              AS aqi_max,
+    ROUND(AVG(p.pm2_5)::numeric, 2)            AS pm2_5_avg,
+    ROUND(AVG(p.pm10)::numeric, 2)             AS pm10_avg,
+    ROUND(AVG(g.ozone)::numeric, 2)            AS ozone_avg,
+    ROUND(AVG(g.nitrogen_dioxide)::numeric, 2) AS no2_avg,
+    ROUND(AVG(g.carbon_monoxide)::numeric, 3)  AS co_avg,
+    ROUND(AVG(gh.carbon_dioxide)::numeric, 2)  AS co2_avg,
+    ROUND(AVG(gh.methane)::numeric, 2)         AS methane_avg,
+    MAX(a.uv_index)                            AS uv_max,
+    ROUND(AVG(a.dust)::numeric, 2)             AS dust_avg
+FROM readings r
+JOIN locations           l  ON l.location_id  = r.location_id
+LEFT JOIN particulates       p  ON p.reading_id   = r.reading_id
+LEFT JOIN gaseous_pollutants g  ON g.reading_id   = r.reading_id
+LEFT JOIN greenhouse_gases   gh ON gh.reading_id  = r.reading_id
+LEFT JOIN atmospheric        a  ON a.reading_id   = r.reading_id
+GROUP BY l.name, l.state, DATE(r.time)
+ORDER BY date, city;
